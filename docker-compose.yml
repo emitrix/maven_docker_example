@@ -1,0 +1,19 @@
+version: "2"
+
+volumes:
+    maven_data: {}
+
+services:
+    maven:
+        image: maven:3.2-jdk-7
+        volumes:
+            - $PWD:/code
+            - "maven_data:/home/root/.m2/repository"
+        working_dir: /code
+        entrypoint: sleep 100d
+    java:
+        image: java:8-jdk-alpine
+        volumes:
+            - $PWD:/code
+        working_dir: /code
+        entrypoint: sleep 100d
